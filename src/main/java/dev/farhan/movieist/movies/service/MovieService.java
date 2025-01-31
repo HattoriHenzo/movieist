@@ -1,6 +1,7 @@
-package dev.farhan.movieist.movies;
+package dev.farhan.movieist.movies.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import dev.farhan.movieist.movies.model.Movie;
+import dev.farhan.movieist.movies.repository.MovieRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,8 +10,11 @@ import java.util.Optional;
 @Service
 public class MovieService {
 
-    @Autowired
-    private MovieRepository repository;
+    private final MovieRepository repository;
+
+    public MovieService(MovieRepository repository) {
+        this.repository = repository;
+    }
 
     public List<Movie> findAllMovies() {
         return repository.findAll();
